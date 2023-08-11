@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"dev.henegan.ExampleMod"
+          "dev.henegan.WhitelistReceiver"
 		],
 		"client": [
 			"dev.henegan.ExampleModClient"
