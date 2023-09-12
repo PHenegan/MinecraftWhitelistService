@@ -3,8 +3,6 @@ package dev.henegan;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.fabricmc.api.DedicatedServerModInitializer;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.Whitelist;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +34,7 @@ public class WhitelistReceiver implements DedicatedServerModInitializer {
 		// Proceed with mild caution.
 
 		ObjectMapper mapper = new ObjectMapper();
-		Optional<WhitelistConfig> config = Optional.empty();
+		Optional<WhitelistConfig> config;
 		try {
 			File configFile = new File("./config/whitelistapi.json");
 
@@ -63,7 +61,7 @@ public class WhitelistReceiver implements DedicatedServerModInitializer {
 	private void startController(WhitelistConfig config, ObjectMapper mapper) {
 		try {
 			Socket socket = config.getSocket();
-			Whitelist whitelist = MinecraftServer
+
 			WhitelistService service = new WhitelistServiceImpl(, LOGGER);
 			SocketController controller = new ThreadedSocketController(
 					new WhitelistController(
